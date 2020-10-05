@@ -1,0 +1,19 @@
+-ID:/Partha/Programming/Platform IO/Ultrasonic Sensors/include
+-ID:/Partha/Programming/Platform IO/Ultrasonic Sensors/src
+-IC:/Users/Asus/.platformio/packages/framework-arduino-avr/cores/arduino
+-IC:/Users/Asus/.platformio/packages/framework-arduino-avr/variants/mega
+-IC:/Users/Asus/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src
+-IC:/Users/Asus/.platformio/packages/framework-arduino-avr/libraries/HID/src
+-IC:/Users/Asus/.platformio/packages/framework-arduino-avr/libraries/SPI/src
+-IC:/Users/Asus/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src
+-IC:/Users/Asus/.platformio/packages/framework-arduino-avr/libraries/Wire/src
+-IC:/Users/Asus/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include
+-IC:/Users/Asus/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include-fixed
+-IC:/Users/Asus/.platformio/packages/toolchain-atmelavr/avr/include
+-IC:/Users/Asus/.platformio/packages/tool-unity
+-DPLATFORMIO=50001
+-DARDUINO_AVR_MEGA2560
+-DF_CPU=16000000L
+-DARDUINO_ARCH_AVR
+-DARDUINO=10808
+-D__AVR_ATmega2560__
