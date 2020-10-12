@@ -9,8 +9,10 @@
 #define WIFI_PASSWORD "mantriCY163" //password of wifi ssid
 
 FirebaseData data;
+String path = "/Node";
+String NodeID = "Status";
 
-int val;
+String val;
 
 void setup()
 {
@@ -35,10 +37,17 @@ void setup()
     Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH); // connect to firebase
 }
 
-void loop()
-{
+void loop(){
 
-    val = Firebase.getInt(data, "/");
-    Serial.print(val);
-
+    if(data.dataType() == "boolean"){
+        Serial.print("boolean");
+    }
+    if (data.dataType() == "string")
+    {
+        Serial.print("string");
+    }
+    if (data.dataType() == "int")
+    {
+        Serial.print("int");
+    }
 }
