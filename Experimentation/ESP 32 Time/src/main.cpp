@@ -52,7 +52,10 @@ void setup()
 
 void loop()
 {
-  delay(1000);
   lcd.clear();
+  lcd.print("IST (GMT +5:30):");
+  lcd.setCursor(0, 1);
   printLocalTime();
+  
+  delay(1000);
 }
