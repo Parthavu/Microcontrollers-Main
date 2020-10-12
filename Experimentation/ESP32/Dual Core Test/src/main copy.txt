@@ -1,0 +1,66 @@
+#include <Arduino.h>
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd(15, 2, 0, 4, 16, 17);
+
+TaskHandle_t Task1, Task2;
+
+const int LED_Pin1 = 12;
+const int LED_Pin2 = 25;
+
+void blink(int LED_PIN_NUMBER, int DURATION_OF_BLINK){
+    digitalWrite(LED_PIN_NUMBER, HIGH);
+    delay(DURATION_OF_BLINK);
+    digitalWrite(LED_PIN_NUMBER, LOW);
+    delay(DURATION_OF_BLINK);
+}
+
+void Task1code(void *parameter) //Core 0
+{
+    for (;;)
+    {
+        blink(LED_Pin1, 100);
+        lcd.setCursor(0, 1);
+        lcd.print("Core 1");
+    }
+}
+
+void Task2code(void *parameter) //Core 1
+{
+    for (;;)
+    {
+        blink(LED_Pin2, 250);
+        lcd.setCursor(0, 0);
+        lcd.print("Core 2");
+    }
+}
+
+void setup(){
+    
+    xTaskCreatePinnedToCore(
+        Task1code,
+        "Task1",
+        10000,
+        NULL,
+        0,
+        &Task1,
+        0
+    );
+
+    xTaskCreatePinnedToCore(
+        Task2code,
+        "Task2",
+        10000,
+        NULL,
+        0,
+        &Task2,
+        0
+    );
+
+    pinMode(LED_Pin1, OUTPUT);
+    pinMode(LED_Pin2, OUTPUT);
+
+    lcd.begin(16, 2);
+}
+
+void loop(){}
