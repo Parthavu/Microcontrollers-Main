@@ -20,7 +20,7 @@ void printLocalTime()
     lcd.print("Failed to obtain time");
     return;
   }
-  lcd.print(&timeinfo, /*%A, %B %d %Y */"%H:%M:%S");
+  lcd.print(&timeinfo, /*"%A, %B %d %Y*/"%H:%M:%S");
 }
 
 void setup()

@@ -1,53 +1,29 @@
 #include <Arduino.h>
-#include <FirebaseESP32.h>
-#include <WiFi.h>
+#include<FirebaseESP32.h>
 
-#define FIREBASE_HOST "esp-32-test-6963e.firebaseio.com" // the project name address from firebase id
-#define FIREBASE_AUTH "tCNMveAlWxQtXhP0JzpS55TEk1C9KvMwoxXgjuPx" // the secret key generated from firebase
+//Define required Credentials
+#define FIREBASE_HOST "esp-32-test-6963e.firebaseio.com"
+#define FIREBASE_AUTH "tCNMveAlWxQtXhP0JzpS55TEk1C9KvMwoxXgjuPx"
+#define WIFI_SSID "Upadhya Family"
+#define WIFI_PASSWORD "mantriCY163"
 
-#define WIFI_SSID "Upadhya Family"      // input your home or public wifi name
-#define WIFI_PASSWORD "mantriCY163" //password of wifi ssid
+FirebaseData firebaseData;
 
-FirebaseData data;
-String path = "/Node";
-String NodeID = "Status";
-
-String val;
-
-void setup()
-{
+void setup(){
     Serial.begin(9600);
-
-    pinMode(LED_BUILTIN, OUTPUT);
-
-    WiFi.begin(WIFI_SSID, WIFI_PASSWORD); //try to connect with wifi
-    Serial.print("Connecting to ");
-    Serial.print(WIFI_SSID);
+    
+    //Connect to WiFi
+    Serial.print("Connecting to Wi-Fi");
     while (WiFi.status() != WL_CONNECTED)
     {
         Serial.print(".");
-        delay(500);
+        delay(300);
     }
     Serial.println();
-    Serial.print("Connected to ");
-    Serial.println(WIFI_SSID);
-    Serial.print("IP Address is : ");
-    Serial.println(WiFi.localIP()); //print local IP address
+    Serial.print("Connected with IP: ");
+    Serial.println(WiFi.localIP());
+    Serial.println();
 
-    Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH); // connect to firebase
-}
-
-void loop(){
-
-    if(data.dataType() == "boolean"){
-        Serial.print("boolean");
-    }
-    if (data.dataType() == "string")
-    {
-        Serial.print("string");
-    }
-    if (data.dataType() == "int")
-    {
-        Serial.print("int");
-    }
+    //Initialize Firebase
+    Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
 }
